@@ -1,0 +1,6 @@
+#Módulo com o vocabulário e as falas do jogo
+
+#apenas para teste
+primeiraConversa = ['Cara desconhecido: Quem é você e oque faz aqui?', 'Me: Eu apenas estava vagando por essa região e...',
+  									'Cara desconhecido:Saia daqui este lugar é perigoso','Me: mas..',
+ 										'Cara desconhecido: nós mantemos esse lugar!','Cara desconhecido:voce precisa sair!']
