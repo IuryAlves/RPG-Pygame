@@ -6,11 +6,28 @@ from Classes import *
 from Cores import *
 import sys
 from pygame.sprite import Sprite, RenderUpdates
-
-
+import sys as s
+s.setrecursionlimit(99999999)
 FPS = 16
 
 filaF, filaC, filaE, filaD = 0, 0, 0, 0
+
+listaImagensFrente = ["sprites/danteFrente1.png",
+                      "sprites/danteFrente2.png", "sprites/danteFrente3.png"]
+listaImagensLadoEsquerdo = ["sprites/danteLadoEsquerdo1.png",
+                            "sprites/danteLadoEsquerdo2.png", "sprites/danteLadoEsquerdo3.png"]
+listaImagensLadoDireito = ["sprites/danteLadoDireito1.png",
+                           "sprites/danteLadoDireito2.png", "sprites/danteLadoDireito3.png"]
+listaImagensCostas = ["sprites/danteCostas1.png",
+                      "sprites/danteCostas2.png", "sprites/danteCostas3.png"]
+
+
+listaImagens = [
+listaImagensFrente,
+listaImagensLadoEsquerdo,
+listaImagensLadoDireito,
+listaImagensCostas
+]
 
 # mover personagem para a esquerda
 
@@ -75,10 +92,10 @@ fundo, tela, clock = config()
 #Criação de objetos
 musica = pygame.mixer.Sound("BGM/Firelink Shrine.wav")
 grupo = RenderUpdates()
-personagem = Personagem(20, 290, grupo)
-npc = Npcs(650, 280, 'sprites/personagem2.png', grupo)
-npc2 = Npcs(675, 240, "sprites/personagem.png", grupo)
-npc3 = Npcs(675, 340, "sprites/personagem.png", grupo)
+personagem = Heroi(20, 290,['nome','sobrenome','classe'],listaImagens, grupo)
+npc = Npcs(650, 280, ['sprites/personagem2.png'], grupo)
+npc2 = Npcs(675, 240, ["sprites/personagem.png"], grupo)
+npc3 = Npcs(675, 340, ["sprites/personagem.png"], grupo)
 pygame.font.init()
 frase = Textos(40, 'Quem eh voce e oque faz aqui?', 'carolingia.ttf')
 

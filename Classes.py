@@ -5,60 +5,58 @@ from pygame.locals import *
 from pygame.sprite import Sprite
 from Cores import *
 
-listaImagensFrente = ["sprites/danteFrente1.png",
-                      "sprites/danteFrente2.png", "sprites/danteFrente3.png"]
-listaImagensLadoEsquerdo = ["sprites/danteLadoEsquerdo1.png",
-                            "sprites/danteLadoEsquerdo2.png", "sprites/danteLadoEsquerdo3.png"]
-listaImagensLadoDireito = ["sprites/danteLadoDireito1.png",
-                           "sprites/danteLadoDireito2.png", "sprites/danteLadoDireito3.png"]
-listaImagensCostas = ["sprites/danteCostas1.png",
-                      "sprites/danteCostas2.png", "sprites/danteCostas3.png"]
                       
 
 #Classes
-class Personagem(Sprite):
-    '''
-    Classe que contem os dados do personagem, alem de carregar imagens e trata-las
-    '''
-    def __init__(self, pxInicial, pyInicial, *grupos):
+
+class Personagens(Sprite):
+  '''
+   *listaImagens sao as imagens reference ao personagem'''
+
+  def __init__(self, pxInicial, pyInicial,listaImagens, *grupos):
         Sprite.__init__(self, *grupos)
         self.pxInicial = pxInicial
         self.pyInicial = pyInicial
         self.px = 0
         self.py = 0
         self.rect = Rect(self.pxInicial, self.pyInicial, 0, 0)
-        global listaImagensFrente, listaImagensCostas, listaImagensLadoDireito, listaImagensLadoEsquerdo
-        self.image = pygame.image.load(listaImagensLadoDireito[0])
+
+        if len(listaImagens) == 1: # para personagens que não se movimentaram 
+          self.image = pygame.image.load(listaImagens[0])
+        else:
+          self.image = pygame.image.load(listaImagens[0][0])
         self.image.set_alpha(None, RLEACCEL)  # disable alpha
         self.image.convert()
         self.image.set_colorkey(magenta, RLEACCEL) #coloca a cor magenta como transparente
         pygame.draw.rect(self.image, preto, self) #Desenha a imagem na tela
 
-    def mover(self, x, y):
-        self.rect.move_ip(x, y)
+  def mover(self, x, y):
+    self.rect.move_ip(x, y)
 
-    def converterImagem(self):
-        self.image.set_alpha(None, RLEACCEL)  # disable alpha
-        self.image.convert()
-        self.image.set_colorkey(magenta, RLEACCEL)
+  def converterImagem(self):
+    self.image.set_alpha(None, RLEACCEL)  # disable alpha
+    self.image.convert()
+    self.image.set_colorkey(magenta, RLEACCEL)
 
 
-class Npcs(Sprite):
-    def __init__(self, posX, posY, arquivoDeImagem, *grupos):
-        self.posX = posX
-        self.posY = posY
-        Sprite.__init__(self, *grupos)
-        self.rect = Rect(self.posX, self.posY, 0, 0)
-        self.image = pygame.image.load(arquivoDeImagem)
-        self.image.set_alpha(None, RLEACCEL)  # disable alpha
-        self.image.convert()
-        self.image.set_colorkey(magenta, RLEACCEL)
-        pygame.draw.rect(self.image, preto, self)
+class Heroi(Personagens):
+  ''' classe que contem os dados do nosso herói
+  '''
 
-    def converterImagem(self):
-        self.image.set_alpha(None, RLEACCEL)  # disable alpha
-        self.image.convert()
-        self.image.set_colorkey(magenta, RLEACCEL)
+  def __init__(self,pxInicial, pyInicial,dados,listaImagens, *grupos):
+    Personagens.__init__(self,pxInicial, pyInicial,listaImagens, *grupos)
+    self.nome = dados[0]
+    self.vida = dados[1]
+    self.classe = dados[2]    
+
+
+class Npcs(Personagens):
+  '''
+  classe que contem os dados dos Npcs
+  '''
+
+  def __init__(self,pxInicial,pyInicial,listaImagens,*grupos):
+    Personagens.__init__(self,pxInicial,pyInicial,listaImagens,*grupos)
 
 
 class Textos():
