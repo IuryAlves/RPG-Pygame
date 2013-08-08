@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import pygame
+try:
+  import pygame
+except Exception:
+  print(" O Pygame não está instalado")
+
 from pygame.locals import *
 from pygame.sprite import Sprite
 from Cores import *
@@ -82,6 +86,5 @@ class Textos():
 
     def alterarTamanho(self, novoTamanho):
         self.tamanho = novoTamanho
-
 
 
