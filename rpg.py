@@ -6,8 +6,7 @@ from Classes import *
 from Cores import *
 import sys
 from pygame.sprite import Sprite, RenderUpdates
-import sys as s
-s.setrecursionlimit(99999999)
+
 FPS = 16
 
 filaF, filaC, filaE, filaD = 0, 0, 0, 0
