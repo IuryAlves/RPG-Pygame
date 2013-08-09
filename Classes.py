@@ -8,7 +8,6 @@ except Exception:
 from pygame.locals import *
 from pygame.sprite import Sprite
 from Cores import *
-
                       
 
 #Classes
@@ -88,3 +87,13 @@ class Textos():
         self.tamanho = novoTamanho
 
 
+class Pontos(object):
+'''
+ define as posicoes no mapa em que o personagem pode passar
+ '''
+  def __init__(self,px,py):
+    self.px = px
+    self.py = py
+  # metodo que verifica em que pontos o personagem pode passar 
+  def podePassar(self,obj,px,py):
+    pass

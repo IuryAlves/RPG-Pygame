@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 from config import *
 from Classes import *
 from Cores import *
@@ -85,69 +84,75 @@ def MPB():
 
 #=======================
 
-fundo, tela, clock = config()
+def main():
+	fundo, tela, clock = config()
 
-#================================
-#Criação de objetos
-musica = pygame.mixer.Sound("BGM/Firelink Shrine.wav")
-grupo = RenderUpdates()
-personagem = Heroi(20, 290,['nome','sobrenome','classe'],listaImagens, grupo)
-npc = Npcs(650, 280, ['sprites/personagem2.png'], grupo)
-npc2 = Npcs(675, 240, ["sprites/personagem.png"], grupo)
-npc3 = Npcs(675, 340, ["sprites/personagem.png"], grupo)
-pygame.font.init()
-frase = Textos(40, 'Quem eh voce e oque faz aqui?', 'carolingia.ttf')
+	#================================
+	#Criação de objetos
+	musica = pygame.mixer.Sound("BGM/Firelink Shrine.wav")
+	grupo = RenderUpdates()
+	personagem = Heroi(20, 290,['nome','sobrenome','classe'],listaImagens, grupo)
+	npc = Npcs(650, 280, ['sprites/personagem2.png'], grupo)
+	npc2 = Npcs(675, 240, ["sprites/personagem.png"], grupo)
+	npc3 = Npcs(675, 340, ["sprites/personagem.png"], grupo)
+	pygame.font.init()
+	frase = Textos(40, 'Quem eh voce e oque faz aqui?', 'carolingia.ttf')
 
-#===================================
+	#===================================
 
-lx = [b for b in range(-4, 76)]
-l1 = [-10]
-l2 = [6]
+	lx = [b for b in range(-4, 76)]
+	l1 = [-10]
+	l2 = [6]
 
-#parede esquerda
-parede = [x for x in range(-10, 16)]
-#colisaoParedeLateral = Eventos(parede, -2)
+	#parede esquerda
+	parede = [x for x in range(-10, 16)]
+	#colisaoParedeLateral = Eventos(parede, -2)
 
 
-#===================================
-iniciarConversa = [43, 0]
+	#===================================
+	iniciarConversa = [43, 0]
 
-teclas = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
-          K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
+	teclas = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
+	          K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
 
-musica.play()
-fundo = fundo.convert()
-pygame.display.flip()
-while True:
-    clock.tick(FPS)
+	musica.play()
+	fundo = fundo.convert()
+	pygame.display.flip()
+	while True:
+	    clock.tick(FPS)
 
-    for e in pygame.event.get([KEYUP, KEYDOWN]):
-        valor = (e.type == KEYDOWN)
-        if e.key in teclas.keys():
-            teclas[e.key] = valor
+	    for e in pygame.event.get([KEYUP, KEYDOWN]):
+	        valor = (e.type == KEYDOWN)
+	        if e.key in teclas.keys():
+	            teclas[e.key] = valor
 
-    if teclas[27]:  # tecla ESC
-        pygame.quit()
-        sys.exit()
-    if personagem.py in l1:
-        MPB()
-        MPD()
-        MPE()
-    elif personagem.py in l2:
-        MPC()
-        MPD()
-        MPE()
-    else:
-        MPE()
-        MPD()
-        MPC()
-        MPB()
+	    if teclas[27]:  # tecla ESC
+	        pygame.quit()
+	        sys.exit()
+	    if personagem.py in l1:
+	        MPB()
+	        MPD()
+	        MPE()
+	    elif personagem.py in l2:
+	        MPC()
+	        MPD()
+	        MPE()
+	    else:
+	        MPE()
+	        MPD()
+	        MPC()
+	        MPB()
 
-    if personagem.px == iniciarConversa[0] and personagem.py == iniciarConversa[1]:
-        tela.blit(frase.frases, (200, 500))
-        pygame.display.flip()
+	    if personagem.px == iniciarConversa[0] and personagem.py == iniciarConversa[1]:
+	        tela.blit(frase.frases, (200, 500))
+	        pygame.display.flip()
 
-    #print(personagem.px, personagem.py)
+	    #print(personagem.px, personagem.py)
 
-    grupo.clear(tela, fundo)
-    pygame.display.update(grupo.draw(tela))
+	    grupo.clear(tela, fundo)
+	    pygame.display.update(grupo.draw(tela))
+
+
+
+if __name__ == '__main__':
+	main()
