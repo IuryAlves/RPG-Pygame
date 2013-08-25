@@ -30,7 +30,7 @@ listaImagensCostas
 # mover personagem para a esquerda
 
 
-def MPE():
+def MPE(teclas,personagem):
     global filaE
     if teclas[K_LEFT] and not teclas[K_DOWN] and not teclas[K_UP]:
         personagem.image = pygame.image.load(listaImagensLadoEsquerdo[filaE])
@@ -43,7 +43,7 @@ def MPE():
 #mover personagem para a direita
 
 
-def MPD():
+def MPD(teclas,personagem):
     global filaD
     if teclas[K_RIGHT] and not teclas[K_DOWN] and not teclas[K_UP]:
         personagem.image = pygame.image.load(listaImagensLadoDireito[filaD])
@@ -57,7 +57,7 @@ def MPD():
 # mover personagem para cima
 
 
-def MPC():
+def MPC(teclas,personagem):
     global filaC
     if teclas[K_UP]:
         personagem.image = pygame.image.load(listaImagensCostas[filaC])
@@ -71,7 +71,7 @@ def MPC():
 # mover personagem para baixo
 
 
-def MPB():
+def MPB(teclas,personagem):
     global filaF
     if teclas[K_DOWN]:
         personagem.image = pygame.image.load(listaImagensFrente[filaF])
@@ -130,24 +130,24 @@ def main():
 	        pygame.quit()
 	        sys.exit()
 	    if personagem.py in l1:
-	        MPB()
-	        MPD()
-	        MPE()
+	        MPB(teclas,personagem)
+	        MPD(teclas,personagem)
+	        MPE(teclas,personagem)
 	    elif personagem.py in l2:
-	        MPC()
-	        MPD()
-	        MPE()
+	        MPC(teclas,personagem)
+	        MPD(teclas,personagem)
+	        MPE(teclas,personagem)
 	    else:
-	        MPE()
-	        MPD()
-	        MPC()
-	        MPB()
+	        MPE(teclas,personagem)
+	        MPD(teclas,personagem)
+	        MPC(teclas,personagem)
+	        MPB(teclas,personagem)
 
 	    if personagem.px == iniciarConversa[0] and personagem.py == iniciarConversa[1]:
 	        tela.blit(frase.frases, (200, 500))
 	        pygame.display.flip()
 
-	    #print(personagem.px, personagem.py)
+	    print(personagem.px, personagem.py)
 
 	    grupo.clear(tela, fundo)
 	    pygame.display.update(grupo.draw(tela))

@@ -88,12 +88,15 @@ class Textos():
 
 
 class Pontos(object):
-'''
- define as posicoes no mapa em que o personagem pode passar
- '''
-  def __init__(self,px,py):
-    self.px = px
-    self.py = py
-  # metodo que verifica em que pontos o personagem pode passar 
-  def podePassar(self,obj,px,py):
-    pass
+  '''
+  define um array de  posicoes no mapa em que o personagem pode passar
+  '''
+  def __init__(self,*pontos):
+    self.pontos = pontos
+    self.pontosX = pontos[0]
+    self.pontosY = pontos[1]
+
+  
+
+
+  
