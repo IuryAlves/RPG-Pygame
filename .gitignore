@@ -8,6 +8,7 @@
 *.egg
 *.egg-info
 dist
+/.idea/
 build
 eggs
 parts
