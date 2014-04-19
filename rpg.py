@@ -22,18 +22,16 @@ def main():
     pygame.font.init()
     frase = Text(40, 'Quem eh voce e oque faz aqui?', 'carolingia.ttf')
 
-
     lx = [b for b in range(-4, 76)]
     l1 = [-10]
     l2 = [6]
 
     parede = [x for x in range(-10, 16)]
 
-
     iniciarConversa = [43, 0]
 
     teclas = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
-          K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
+              K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
 
     musica.play()
     fundo = fundo.convert()
@@ -69,6 +67,5 @@ def main():
         pygame.display.update(grupo.draw(tela))
 
 
-
 if __name__ == '__main__':
-	main()
+    main()
