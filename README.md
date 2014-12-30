@@ -1,4 +1,4 @@
-## Game develop with python and pygame
+## Game developed with python and pygame
 
 to use run `python rpg.py`
 
