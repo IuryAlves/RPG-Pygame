@@ -4,18 +4,40 @@ import pygame
 from pygame.locals import *
 from pygame.sprite import RenderUpdates
 
-#
-# Module that contains the configuration of the game
-#
+"""
+	Module that contains the configuration of the game
+"""
 
+SCREEN_SIZE = (800, 600)
+FPS = 16
+NAME = "RPG"
+DEFAULT_BACKGROUND = "imagens/cenario2.png"
 
 def config():
+	"""
+	Commom configuration of a pygame project
+	"""
+
+	# initialize the pygame
     pygame.init()
-    SCREEN_SIZE = (800, 600)
-    NAME = "RPG"
+
+    # configure the screen size
     c_screen = pygame.display.set_mode(SCREEN_SIZE)
+
+    # configure the name of the game
     pygame.display.set_caption(NAME)
+
+    # initialize the clock
     c_clock = pygame.time.Clock()
-    c_background = pygame.image.load("imagens/cenario2.png")
+    c_clock.tick(FPS)
+
+    # load the default background
+    c_background = pygame.image.load(DEFAULT_BACKGROUND)
+    
+    # copy the background to the screen
     c_screen.blit(c_background, (0, 0))
-    return c_background, c_screen, c_clock
+
+    # initalize the font`s module
+    pygame.font.init()
+
+    return c_background, c_screen
